@@ -1,20 +1,22 @@
+# Obtem o index da coluna do menor fator na função objetiva
 def getIndexCol(matrix):
     i = 0
     minimun = min(matrix[-1][1:])
     while matrix[-1][i] != minimun: i = i + 1
     return i
 
+# Obtem o index da linha do menor do resulta da expreção 
+# valor index da coluna pelo resultado das restrições
 def getIndexLine(matrix, indexCol):
     indexLine = 0
     smaller = float('inf')
     for i in range(1, len(matrix[1:])):
         if matrix[i][indexCol] > 0 and smaller > matrix[i][-1]/matrix[i][indexCol]:
             smaller = matrix[i][-1]/matrix[i][indexCol]
-            print(smaller)
             indexLine = i
     return indexLine
 
-
+# Faz o calculo geral para obteção do tablues
 def calcOptimalAnswer(matrix):
     while (min(matrix[-1][1:]) < 0 ):
 
@@ -42,12 +44,14 @@ def calcOptimalAnswer(matrix):
             printMatrix(matrix)
     getOptimalAnswer(matrix)
 
+# Mostra o resultado ótimo
 def getOptimalAnswer(matrix):
     print ("## Answers ##")
     for line in matrix[1:-1]:
         print(line[0], "* = ", line[-1], sep="")
     print("Z* =", matrix[-1][-1] * (-1))
 
+# Configura as entras para a forma cononica
 def setMatrixCanonical(objectiveFunction, restrictions):
     matrix = [[]] * (len(restrictions) + 2)
     for i in range(len(matrix)):
@@ -71,12 +75,14 @@ def setMatrixCanonical(objectiveFunction, restrictions):
 
     return matrix
 
+# Função auxiliar: mostra a matriz
 def printMatrix(matrix):
     for line in matrix:
         for element in line:
             print(element, "\t", end="")
         print()
 
+# Faz a tranformação para a forma padrão
 def changeStandardForm(kind, objectiveFunction, restrictions):
     j = len(objectiveFunction)
     if kind == "max":
@@ -96,6 +102,7 @@ def changeStandardForm(kind, objectiveFunction, restrictions):
 
     return kind, objectiveFunction, restrictions
 
+# Mostra a expreção PPL
 def printPPL(kind, objectiveFunction, restrictions):
     if kind == "max":
         print("Max. Z: ", end="")
@@ -126,6 +133,7 @@ def printPPL(kind, objectiveFunction, restrictions):
                 print(" ",line[i]," ", end="")
         print()
 
+# Configura o problema de Programação Linear
 def setPPL():
     choice = input("\n[1] Max\n[2] Min\nChoice: ")
     if choice == "1":
@@ -142,13 +150,11 @@ def setPPL():
     restrictions = [[]] * restrictionCount
     for i in range(len(restrictions)):
         restrictions[i] = [0] * (varCount + restrictionCount)
-    printMatrix(restrictions)
     print("\n############# In Objective Function ##############")
     for i in range(varCount):
         factor = int(input("What is the factor of variable x_%s?\n: " %(i+1)))
         objetiveFunction = objetiveFunction + [factor]
     print("\n############### In Restrictions #################")
-    
     for i in range(restrictionCount):
         print("restriction %s:" %(i+1))
         for j in range(varCount+2):
@@ -160,5 +166,4 @@ def setPPL():
                 restrictions[i] = restrictions[i] + [input("<= or >=?\n: ")]
             else:
                 restrictions[i] = restrictions[i] + [int(input("Result:\n: "))]
-    
     return kind, objetiveFunction, restrictions
