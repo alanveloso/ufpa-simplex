@@ -71,7 +71,6 @@ def printMatrix(matrix):
             print(element, "\t", end="")
         print()
 
-
 def changeStandardForm(kind, objectiveFunction, restrictions):
     j = len(objectiveFunction)
     if kind == "max":
@@ -133,22 +132,27 @@ def setPPL():
     varCount = int(input("How many variables?\n: "))
     restrictionCount = int(input("How many retrictions?\n: "))
     objetiveFunction = []
+
+    restrictions = [[]] * restrictionCount
+    for i in range(len(restrictions)):
+        restrictions[i] = [0] * (varCount + restrictionCount)
+    printMatrix(restrictions)
     print("\n############# In Objective Function ##############")
     for i in range(varCount):
         factor = int(input("What is the factor of variable x_%s?\n: " %(i+1)))
         objetiveFunction = objetiveFunction + [factor]
-
-    restrictions = [[]] * restrictionCount
     print("\n############### In Restrictions #################")
+    
     for i in range(restrictionCount):
         print("restriction %s:" %(i+1))
         for j in range(varCount+2):
+            printMatrix(restrictions)
             if j < varCount:
                 factor = int(input("What is the factor of variable x_%s?\n: " %(j+1)))
-                restrictions[i] = restrictions[i] + [factor]
+                restrictions[i][j] = factor
             elif j == varCount:
                 restrictions[i] = restrictions[i] + [input("<= or >=?\n: ")]
-            elif j == varCount + 1:
+            else:
                 restrictions[i] = restrictions[i] + [int(input("Result:\n: "))]
-
+    
     return kind, objetiveFunction, restrictions
