@@ -4,12 +4,6 @@ def getSmallerNumber(matrix):
     while matrix[-1][i] != minimun: i = i + 1
     return i
 
-
-def divideLine(line, divisor):
-    for i in range(len(line)):
-        line[i] = line[i] / divisor
-    return line
-
 def getIndexLine(matrix, indexCol):
     indexLine = 0
     smaller = float('inf')
@@ -127,6 +121,34 @@ def printPPL(kind, objectiveFunction, restrictions):
                 print(" ",line[i]," ", end="")
         print()
 
-def showMenu():
-    print("Choice:\n[1] Max\n[2] Min")
+def setPPL():
+    choice = input("\n[1] Max\n[2] Min\nChoice: ")
+    if choice == "1":
+        kind = "max"
+    elif choice == "2":
+        kind = "min"
+    else:
+        print("Exit...")
+        return 0
+    varCount = int(input("How many variables?\n: "))
+    restrictionCount = int(input("How many retrictions?\n: "))
+    objetiveFunction = []
+    print("\n############# In Objective Function ##############")
+    for i in range(varCount):
+        factor = int(input("What is the factor of variable x_%s?\n: " %(i+1)))
+        objetiveFunction = objetiveFunction + [factor]
 
+    restrictions = [[]] * restrictionCount
+    print("\n############### In Restrictions #################")
+    for i in range(restrictionCount):
+        print("restriction %s:" %(i+1))
+        for j in range(varCount+2):
+            if j < varCount:
+                factor = int(input("What is the factor of variable x_%s?\n: " %(j+1)))
+                restrictions[i] = restrictions[i] + [factor]
+            elif j == varCount:
+                restrictions[i] = restrictions[i] + [input("<= or >=?\n: ")]
+            elif j == varCount + 1:
+                restrictions[i] = restrictions[i] + [int(input("Result:\n: "))]
+
+    return kind, objetiveFunction, restrictions
