@@ -1,3 +1,10 @@
+% Univeridade Federal do Pará
+% Autor: Alan Tony Souza Veloso
+% Orientador: Filipe Saraiva
+% Diciplina: Matemática Computacional
+
+__author__ = "Alan Veloso"
+
 # Obtem o index da coluna do menor fator na função objetiva
 def getIndexCol(matrix):
     i = 0
