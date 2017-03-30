@@ -1,6 +1,6 @@
-#Trabalho – Implementação do Método Simplex
+# Trabalho – Implementação do Método Simplex
 
-##Descrição
+## Descrição
 
 Durante a disciplina de Matemática Computacional estudamos com principal ênfase o Método Simplex de resolução de problemas de otimização linear.
 
@@ -16,13 +16,13 @@ O programa a ser desenvolvido deve implementar apenas o Simplex convencional, se
 15 dias antes do prazo de entrega do trabalho os grupos receberão 3 questões de otimização linear com problemas que devem ser modelados e respondidos corretamente pelo software desenvolvido.
 O trabalho terá valor máximo de 1,5 pontos diretamente na média do aluno – isso equivale a 15% da média máxima e 30% da média mínima para aprovação na disciplina.
 
-##Prazo
+## Prazo
 
 O prazo de entrega será dia 31 de março de 2017, em aula a ser agendada possivelmente em laboratório do curso.
 
 No dia 15 de março os estudantes receberão as questões a serem modeladas e respondidas no trabalho.
 
-##Avaliação
+## Avaliação
 
 Os alunos deverão ter o software desenvolvido e funcional no prazo estipulado. O software deverá ter seu código fonte enviado para o professor, bem como explicado e compilado durante a demonstração de funcionamento do mesmo.
 
