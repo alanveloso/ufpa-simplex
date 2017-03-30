@@ -1,4 +1,4 @@
-def getSmallerNumber(matrix):
+def getIndexCol(matrix):
     i = 0
     minimun = min(matrix[-1][1:])
     while matrix[-1][i] != minimun: i = i + 1
@@ -15,7 +15,7 @@ def getIndexLine(matrix, indexCol):
     return indexLine
 
 
-def func1(matrix):
+def calcOptimalAnswer(matrix):
     while (min(matrix[-1][1:]) < 0 ):
 
         indexLine = 0
@@ -23,7 +23,7 @@ def func1(matrix):
         num = 0
         divisor = 1
 
-        indexCol = getSmallerNumber(matrix)
+        indexCol = getIndexCol(matrix)
         # Procura a linha que sai
         indexLine = getIndexLine(matrix, indexCol)
         matrix[indexLine][0] = matrix[0][indexCol]
@@ -40,7 +40,13 @@ def func1(matrix):
                 for j in range(1, len(matrix[0])):
                     matrix[i][j] = matrix[indexLine][j] * num + matrix[i][j]
             printMatrix(matrix)
+    getOptimalAnswer(matrix)
 
+def getOptimalAnswer(matrix):
+    print ("## Answers ##")
+    for line in matrix[1:-1]:
+        print(line[0], "* = ", line[-1], sep="")
+    print("Z* =", matrix[-1][-1] * (-1))
 
 def setMatrixCanonical(objectiveFunction, restrictions):
     matrix = [[]] * (len(restrictions) + 2)

@@ -16,7 +16,7 @@ def main():
     print ("###############")
     printMatrix(matrix)
     print ("###############")
-    func1(matrix)
+    calcOptimalAnswer(matrix)
 
 if __name__ == "__main__":
     print("Main started")
@@ -36,4 +36,4 @@ else:
     print ("###############")
     printMatrix(matriz)
     print ("###############")
-    func1(matriz)
+    calcOptimalAnswer(matriz)
